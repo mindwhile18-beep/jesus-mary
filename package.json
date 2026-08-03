@@ -1,0 +1,17 @@
+{
+  "name": "infant-jesus-school",
+  "version": "1.0.0",
+  "description": "Website for Infant Jesus English Medium High School, Vinjamur",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "school",
+    "website",
+    "static"
+  ],
+  "author": "",
+  "license": "ISC"
+}
