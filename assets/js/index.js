@@ -1,4 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Hero Image Automatic & Interactive Slider
+    const heroSlider = document.getElementById('heroSlider');
+    if (heroSlider) {
+        const slides = heroSlider.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        let slideInterval;
+
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => { goToSlide(idx); resetTimer(); });
+            if (dotsContainer) dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.slider-dot') : [];
+
+        const goToSlide = (n) => {
+            slides[currentSlide].classList.remove('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+        };
+
+        const nextSlide = () => goToSlide(currentSlide + 1);
+        const prevSlide = () => goToSlide(currentSlide - 1);
+
+        if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
+        if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
+
+        const startTimer = () => {
+            slideInterval = setInterval(nextSlide, 3500);
+        };
+
+        const resetTimer = () => {
+            clearInterval(slideInterval);
+            startTimer();
+        };
+
+        startTimer();
+    }
+
     // 1. Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
