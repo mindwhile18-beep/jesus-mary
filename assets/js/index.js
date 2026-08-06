@@ -106,54 +106,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
     
-    let currentIndex = 0;
-    const galleryData = Array.from(galleryItems).map(item => ({
-        src: item.querySelector('img').src,
-        title: item.getAttribute('data-title'),
-        desc: item.getAttribute('data-desc')
-    }));
+    if (lightbox && galleryItems.length > 0 && lightboxImg && lightboxClose) {
+        let currentIndex = 0;
+        const galleryData = Array.from(galleryItems).map(item => ({
+            src: item.querySelector('img').src,
+            title: item.getAttribute('data-title'),
+            desc: item.getAttribute('data-desc')
+        }));
 
-    const showLightbox = (index) => {
-        if (index < 0) index = galleryData.length - 1;
-        if (index >= galleryData.length) index = 0;
-        
-        currentIndex = index;
-        lightboxImg.src = galleryData[currentIndex].src;
-        lightboxTitle.innerText = galleryData[currentIndex].title;
-        lightboxDesc.innerText = galleryData[currentIndex].desc;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // prevent scrolling
-    };
+        const showLightbox = (index) => {
+            if (index < 0) index = galleryData.length - 1;
+            if (index >= galleryData.length) index = 0;
+            
+            currentIndex = index;
+            lightboxImg.src = galleryData[currentIndex].src;
+            lightboxTitle.innerText = galleryData[currentIndex].title;
+            lightboxDesc.innerText = galleryData[currentIndex].desc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // prevent scrolling
+        };
 
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            showLightbox(index);
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                showLightbox(index);
+            });
         });
-    });
 
-    const closeLightbox = () => {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    };
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
 
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', () => showLightbox(currentIndex - 1));
-    lightboxNext.addEventListener('click', () => showLightbox(currentIndex + 1));
+        lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', () => showLightbox(currentIndex - 1));
+        if (lightboxNext) lightboxNext.addEventListener('click', () => showLightbox(currentIndex + 1));
 
-    // Close lightbox on click outside the image
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-    });
+        // Close lightbox on click outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
 
-    // Keyboard support for Lightbox
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') showLightbox(currentIndex - 1);
-        if (e.key === 'ArrowRight') showLightbox(currentIndex + 1);
-    });
+        // Keyboard support for Lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showLightbox(currentIndex - 1);
+            if (e.key === 'ArrowRight') showLightbox(currentIndex + 1);
+        });
+    }
 
     // 5. Inquiry Form Submission handling
     const inquiryForm = document.getElementById('inquiryForm');
