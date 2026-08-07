@@ -262,6 +262,7 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .logo-img {
@@ -272,6 +273,7 @@ img {
 .logo-text {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .school-name-main {
@@ -280,6 +282,7 @@ img {
     font-weight: 800;
     color: var(--text-white);
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .school-type {
@@ -1829,6 +1832,15 @@ img {
 @media (max-width: 768px) {
     html {
         font-size: 15px;
+    }
+    
+    .school-name-main {
+        font-size: 1.05rem;
+    }
+    
+    .school-type {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
     }
     
     .mobile-toggle {
