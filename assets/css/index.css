@@ -1289,7 +1289,7 @@ img {
 .overlay-content h3 {
     font-family: var(--font-heading);
     font-size: 1.15rem;
-    color: var(--text-white);
+    color: #ffffff;
 }
 
 .gallery-item:hover img {
@@ -1365,18 +1365,18 @@ img {
 .lightbox-caption {
     text-align: center;
     margin-top: 20px;
-    color: var(--text-light);
+    color: #ffffff;
 }
 
 .lightbox-caption h4 {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    color: var(--primary-color);
+    color: var(--primary-light);
 }
 
 .lightbox-caption p {
     font-size: 0.95rem;
-    color: var(--text-muted);
+    color: #e0e0e0;
     margin-top: 5px;
 }
 
