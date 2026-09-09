@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>J.M.J. English Medium School | Kurnool</title>
     <meta name="description" content="J.M.J. English Medium School, Kurnool - Established in 1988, dedicated to holistic education, moral values, and academic excellence. Love, Joy, Service.">
     <!-- Google Fonts -->
@@ -26,7 +26,7 @@
 
 
     <!-- Top Contact Bar -->
-    <div class="top-bar">
+    <div class="top-bar desktop-only">
         <div class="container top-bar-content">
             <div class="top-info">
                 <span><i class="fa-solid fa-phone"></i> <a href="tel:+918518248493">08518-248493</a></span>
@@ -85,118 +85,7 @@
         </div>
     </div>
 
-    <!-- Mobile Swipeable Highlight Stories Bar -->
-    <div class="mobile-stories-bar">
-        <div class="stories-scroll">
-            <div class="story-item" onclick="document.querySelector('#heroSlider').scrollIntoView({behavior: 'smooth'})">
-                <div class="story-ring active">
-                    <img src="assets/images/slider_national_education_award.jpg" alt="Award 2026">
-                </div>
-                <span>Award '26</span>
-            </div>
-            <div class="story-item" onclick="document.querySelector('#toppers').scrollIntoView({behavior: 'smooth'})">
-                <div class="story-ring">
-                    <img src="assets/images/toppers_banner.jpg" alt="SSC Toppers">
-                </div>
-                <span>SSC Toppers</span>
-            </div>
-            <div class="story-item" onclick="document.querySelector('#video-tour').scrollIntoView({behavior: 'smooth'})">
-                <div class="story-ring">
-                    <img src="assets/images/hero-poster.jpg" alt="Campus Tour">
-                </div>
-                <span>Video Tour</span>
-            </div>
-            <div class="story-item" onclick="openMobileAppPortal('notices')">
-                <div class="story-ring story-ring-alert">
-                    <img src="assets/images/slider_yoga_felicitation.jpg" alt="Events">
-                </div>
-                <span>Events</span>
-            </div>
-            <div class="story-item" onclick="openMobileAppPortal('erp')">
-                <div class="story-ring">
-                    <img src="assets/images/logo.png" alt="ERP Portal">
-                </div>
-                <span>ERP Portal</span>
-            </div>
-            <div class="story-item" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">
-                <div class="story-ring">
-                    <img src="assets/images/school-building.png" alt="Admissions">
-                </div>
-                <span>Admissions</span>
-            </div>
-        </div>
-    </div>
 
-    <!-- Mobile Quick Action Apps Dashboard Section -->
-    <section class="mobile-app-dashboard-section" id="mobileDashboard">
-        <div class="container">
-            <div class="mobile-dashboard-header">
-                <div class="dash-title">
-                    <i class="fa-solid fa-grip-vertical"></i>
-                    <span>Quick Mobile Apps & Services</span>
-                </div>
-                <button class="btn-text-sm" onclick="openMobileAppPortal('all')">View All <i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-            <div class="mobile-app-grid">
-                <a href="https://jmj.ourschoolerp.com/signin/index" target="_blank" class="app-card app-card-erp">
-                    <div class="app-icon-box bg-gradient-purple">
-                        <i class="fa-solid fa-id-card"></i>
-                    </div>
-                    <span class="app-label">ERP Portal</span>
-                    <span class="app-tag">Sign In</span>
-                </a>
-                <a href="#contact" class="app-card">
-                    <div class="app-icon-box bg-gradient-pink">
-                        <i class="fa-solid fa-file-pen"></i>
-                    </div>
-                    <span class="app-label">Admission</span>
-                    <span class="app-tag">Enquire</span>
-                </a>
-                <a href="tel:+918518248493" class="app-card">
-                    <div class="app-icon-box bg-gradient-green">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <span class="app-label">Call Office</span>
-                    <span class="app-tag">Direct</span>
-                </a>
-                <a href="https://wa.me/918518248493" target="_blank" class="app-card">
-                    <div class="app-icon-box bg-gradient-whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <span class="app-label">WhatsApp</span>
-                    <span class="app-tag">Chat</span>
-                </a>
-                <a href="javascript:void(0)" onclick="openMobileAppPortal('notices')" class="app-card">
-                    <div class="app-icon-box bg-gradient-orange">
-                        <i class="fa-solid fa-bullhorn"></i>
-                    </div>
-                    <span class="app-label">Circulars</span>
-                    <span class="app-tag font-bold">New</span>
-                </a>
-                <a href="#academics" class="app-card">
-                    <div class="app-icon-box bg-gradient-blue">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-                    <span class="app-label">SSC Results</span>
-                    <span class="app-tag">Toppers</span>
-                </a>
-                <a href="javascript:void(0)" onclick="openMobileAppPortal('fee')" class="app-card">
-                    <div class="app-icon-box bg-gradient-gold">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <span class="app-label">Fee Details</span>
-                    <span class="app-tag">Info</span>
-                </a>
-                <a href="#video-tour" class="app-card">
-                    <div class="app-icon-box bg-gradient-red">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <span class="app-label">Video Tour</span>
-                    <span class="app-tag">Watch</span>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- Hero Section -->
     <section id="home" class="hero">

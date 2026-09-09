@@ -27,10 +27,16 @@
 }
 
 /* Reset & Global Styles */
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
 }
 
 html {
@@ -43,13 +49,22 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     line-height: 1.6;
-    overflow-x: hidden;
+    position: relative;
 }
 
 .container {
     width: 90%;
     max-width: var(--container-width);
     margin: 0 auto;
+}
+
+@media screen and (max-width: 991px) {
+    .container {
+        width: 92% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
 }
 
 a {
@@ -209,11 +224,21 @@ img {
 .social-link.youtube { background-color: #ff0000; }
 
 /* Top Contact Bar */
+.desktop-only {
+    display: block;
+}
+
 .top-bar {
     background-color: var(--bg-light-dark); color: var(--text-light);
     padding: 8px 0;
     font-size: 0.85rem;
     border-bottom: 1px solid var(--border-gold);
+}
+
+@media screen and (max-width: 991px) {
+    .desktop-only, .top-bar {
+        display: none !important;
+    }
 }
 
 .top-bar-content {
@@ -2955,12 +2980,53 @@ img {
 }
 
 /* ==========================================================================
-   RESPONSIVE MEDIA QUERIES FOR MOBILE APP UI
+   RESPONSIVE MEDIA QUERIES FOR NATIVE MOBILE APP UI
    ========================================================================== */
 
 @media screen and (max-width: 991px) {
+    /* Hide desktop top contact bar on mobile viewports for clean app feel */
+    .top-bar {
+        display: none !important;
+    }
+
     body {
         padding-bottom: calc(65px + env(safe-area-inset-bottom));
+    }
+
+    /* Mobile Sticky App Bar Header */
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 1005;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(236, 64, 122, 0.15);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        padding: 0;
+    }
+
+    .header-container {
+        padding: 8px 12px;
+    }
+
+    .logo-area {
+        gap: 10px;
+    }
+
+    .logo-img {
+        height: 38px;
+        width: auto;
+    }
+
+    .school-name-main {
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+    }
+
+    .school-type {
+        font-size: 0.65rem;
+        letter-spacing: 0.3px;
     }
     
     .mobile-app-top-actions {
@@ -2994,24 +3060,56 @@ img {
 }
 
 @media screen and (max-width: 480px) {
+    .header-container {
+        padding: 6px 10px;
+    }
+
+    .school-name-main {
+        font-size: 0.88rem;
+    }
+
+    .school-type {
+        font-size: 0.6rem;
+    }
+
+    .mobile-stories-bar {
+        padding: 8px 0 6px;
+    }
+
+    .story-item {
+        min-width: 62px;
+    }
+
+    .story-ring {
+        width: 52px;
+        height: 52px;
+    }
+
     .mobile-app-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 8px;
     }
 
+    .app-card {
+        padding: 10px 4px 8px;
+        border-radius: 16px;
+    }
+
     .app-icon-box {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1.15rem;
         border-radius: 12px;
+        margin-bottom: 5px;
     }
 
     .app-label {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
     }
 
     .app-tag {
         font-size: 0.6rem;
     }
 }
+
 
