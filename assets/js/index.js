@@ -314,3 +314,167 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+// 7. Mobile App UI Interactive Handlers (Drawer, Bottom Nav, Portal Sheet & PWA Install)
+
+// Global Mobile App Portal helper
+window.openMobileAppPortal = function(tabName) {
+    const portalModal = document.getElementById('portalModal');
+    const portalOverlay = document.getElementById('portalModalOverlay');
+    if (!portalModal || !portalOverlay) return;
+
+    portalModal.classList.add('active');
+    portalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    if (tabName && tabName !== 'all') {
+        const tabBtn = document.querySelector(`.modal-tab-btn[data-tab="tab-${tabName}"]`);
+        if (tabBtn) tabBtn.click();
+    }
+};
+
+window.closeMobileAppPortal = function() {
+    const portalModal = document.getElementById('portalModal');
+    const portalOverlay = document.getElementById('portalModalOverlay');
+    if (portalModal) portalModal.classList.remove('active');
+    if (portalOverlay) portalOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    // A. Mobile Side Drawer
+    const mobileAppDrawer = document.getElementById('mobileAppDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+    const mobileToggle = document.getElementById('mobileToggle');
+
+    const openDrawer = () => {
+        if (mobileAppDrawer && drawerOverlay) {
+            mobileAppDrawer.classList.add('active');
+            drawerOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeDrawer = () => {
+        if (mobileAppDrawer && drawerOverlay) {
+            mobileAppDrawer.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
+
+    if (mobileToggle) mobileToggle.addEventListener('click', openDrawer);
+    if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+    // Close drawer when link clicked
+    document.querySelectorAll('.drawer-link').forEach(link => {
+        link.addEventListener('click', closeDrawer);
+    });
+
+    // B. Mobile Portal Modal & Tabs
+    const portalModalClose = document.getElementById('portalModalClose');
+    const portalOverlay = document.getElementById('portalModalOverlay');
+    const openMobilePortalBtn = document.getElementById('openMobilePortalBtn');
+    const bottomNavPortalBtn = document.getElementById('bottomNavPortalBtn');
+
+    if (portalModalClose) portalModalClose.addEventListener('click', closeMobileAppPortal);
+    if (portalOverlay) portalOverlay.addEventListener('click', closeMobileAppPortal);
+    if (openMobilePortalBtn) openMobilePortalBtn.addEventListener('click', () => openMobileAppPortal('notices'));
+    if (bottomNavPortalBtn) bottomNavPortalBtn.addEventListener('click', () => openMobileAppPortal('all'));
+
+    const tabBtns = document.querySelectorAll('.modal-tab-btn');
+    const tabPanes = document.querySelectorAll('.modal-tab-pane');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            const pane = document.getElementById(tabId);
+            if (pane) pane.classList.add('active');
+        });
+    });
+
+    // C. Bottom Navigation Scroll Sync & Active Highlight
+    const bottomNavTabs = document.querySelectorAll('.mobile-bottom-nav .nav-tab:not(#bottomNavPortalBtn)');
+    const pageSections = document.querySelectorAll('section[id]');
+
+    window.addEventListener('scroll', () => {
+        let scrollY = window.pageYOffset;
+
+        pageSections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 150;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                bottomNavTabs.forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.getAttribute('data-target') === sectionId) {
+                        tab.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // D. PWA Installation Event Listener
+    let deferredPrompt;
+    const pwaBanner = document.getElementById('pwaBanner');
+    const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+    const pwaCloseBtn = document.getElementById('pwaCloseBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (pwaBanner) pwaBanner.style.display = 'flex';
+    });
+
+    if (pwaInstallBtn) {
+        pwaInstallBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to install prompt: ${outcome}`);
+                deferredPrompt = null;
+                if (pwaBanner) pwaBanner.style.display = 'none';
+            } else {
+                alert('To install the JMJ Mobile App, tap your browser menu (⋮ or share button) and select "Add to Home Screen".');
+            }
+        });
+    }
+
+    if (pwaCloseBtn) {
+        pwaCloseBtn.addEventListener('click', () => {
+            if (pwaBanner) pwaBanner.style.display = 'none';
+        });
+    }
+
+    // E. Touch Swipe Gesture Support for Stories & Hero Slider
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const heroSliderElem = document.getElementById('heroSlider');
+
+    if (heroSliderElem) {
+        heroSliderElem.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        heroSliderElem.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            const nextBtn = document.getElementById('sliderNext');
+            const prevBtn = document.getElementById('sliderPrev');
+            if (touchEndX < touchStartX - 40 && nextBtn) nextBtn.click();
+            if (touchEndX > touchStartX + 40 && prevBtn) prevBtn.click();
+        };
+    }
+});
+

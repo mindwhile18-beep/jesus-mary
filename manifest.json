@@ -1,0 +1,22 @@
+{
+  "name": "J.M.J. English Medium School",
+  "short_name": "JMJ School",
+  "description": "Official Mobile App & Portal for J.M.J. English Medium School, Kurnool.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#faf8f9",
+  "theme_color": "#ec407a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

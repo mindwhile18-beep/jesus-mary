@@ -2143,3 +2143,875 @@ img {
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(5, 150, 105, 0.35);
 }
+
+/* ==========================================================================
+   MOBILE APP UI DESIGN SYSTEM & COMPONENTS (iOS / Android Native Feel)
+   ========================================================================== */
+
+/* 1. Mobile App Top Actions Header */
+.mobile-app-top-actions {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-btn-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(236, 64, 122, 0.1);
+    border: 1px solid var(--border-gold);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.app-btn-icon:hover, .app-btn-icon:active {
+    background: var(--primary-color);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.badge-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 9px;
+    height: 9px;
+    background-color: #ef4444;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+/* 2. PWA Mobile App Install Banner */
+.pwa-install-banner {
+    display: none;
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+    border-bottom: 2px solid var(--primary-light);
+    padding: 10px 16px;
+    box-shadow: 0 4px 15px rgba(236, 64, 122, 0.1);
+    align-items: center;
+    justify-content: space-between;
+    z-index: 990;
+}
+
+.pwa-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pwa-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.pwa-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.pwa-text strong {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--text-white);
+}
+
+.pwa-text span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.pwa-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-pwa-install {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 20px;
+    border: none;
+    background: var(--primary-color);
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(236, 64, 122, 0.3);
+    transition: var(--transition);
+}
+
+.btn-pwa-install:active {
+    transform: scale(0.95);
+}
+
+.btn-pwa-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* 3. Mobile Swipeable Highlight Stories Bar */
+.mobile-stories-bar {
+    display: none;
+    background: var(--bg-card);
+    padding: 12px 0 8px;
+    border-bottom: 1px solid var(--border-gold);
+    overflow: hidden;
+}
+
+.stories-scroll {
+    display: flex;
+    gap: 16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.stories-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    min-width: 68px;
+    text-align: center;
+}
+
+.story-ring {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 2.5px;
+    background: linear-gradient(45deg, #ec407a, #ff9800, #9c27b0);
+    transition: var(--transition);
+}
+
+.story-ring.active {
+    animation: pulseGlow 2s infinite;
+}
+
+.story-ring.story-ring-alert {
+    background: linear-gradient(45deg, #ef4444, #f59e0b);
+}
+
+.story-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+}
+
+.story-item span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(236, 64, 122, 0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(236, 64, 122, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(236, 64, 122, 0); }
+}
+
+/* 4. Mobile Quick Action Apps Dashboard Section */
+.mobile-app-dashboard-section {
+    display: none;
+    padding: 20px 0 10px;
+    background: var(--bg-light-dark);
+}
+
+.mobile-dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.dash-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-white);
+}
+
+.dash-title i {
+    color: var(--primary-color);
+}
+
+.btn-text-sm {
+    background: none;
+    border: none;
+    color: var(--primary-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mobile-app-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.app-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 12px 6px 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(236, 64, 122, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-card:active {
+    transform: scale(0.93);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.app-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.bg-gradient-purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+.bg-gradient-pink   { background: linear-gradient(135deg, #ec407a, #f472b6); }
+.bg-gradient-green  { background: linear-gradient(135deg, #059669, #10b981); }
+.bg-gradient-whatsapp { background: linear-gradient(135deg, #16a34a, #22c55e); }
+.bg-gradient-orange { background: linear-gradient(135deg, #ea580c, #f97316); }
+.bg-gradient-blue   { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+.bg-gradient-gold   { background: linear-gradient(135deg, #d97706, #fbbf24); }
+.bg-gradient-red    { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+.app-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.1;
+    margin-bottom: 3px;
+}
+
+.app-tag {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.app-tag.font-bold {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* 5. Fixed Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(65px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(236, 64, 122, 0.2);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    color: #64748b;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-icon-wrapper {
+    position: relative;
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.tab-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+}
+
+.nav-tab.active {
+    color: var(--primary-color);
+}
+
+.nav-tab.active .tab-icon-wrapper {
+    transform: translateY(-2px) scale(1.1);
+}
+
+.nav-tab-center {
+    position: relative;
+}
+
+.center-fab {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ec407a 0%, #c2185b 100%);
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 15px rgba(236, 64, 122, 0.45);
+    margin-top: -16px;
+    border: 3px solid #ffffff;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-tab-center:active .center-fab {
+    transform: scale(0.9);
+}
+
+/* 6. Mobile Slide-Out App Drawer */
+.mobile-app-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1040;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.mobile-app-drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-app-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: #ffffff;
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.2);
+}
+
+.mobile-app-drawer.active {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    background: linear-gradient(135deg, #ec407a 0%, #ad1457 100%);
+    padding: 24px 20px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drawer-user-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.drawer-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 3px;
+    object-fit: contain;
+}
+
+.drawer-user-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.drawer-user-info p {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+.drawer-close-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.drawer-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.drawer-section {
+    margin-bottom: 20px;
+}
+
+.drawer-section-title {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    padding-left: 10px;
+}
+
+.drawer-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.drawer-link i {
+    width: 22px;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.drawer-link:hover, .drawer-link:active {
+    background: rgba(236, 64, 122, 0.08);
+    color: var(--primary-dark);
+}
+
+.drawer-link.highlight-link {
+    background: rgba(236, 64, 122, 0.12);
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.drawer-footer {
+    padding: 16px;
+    border-top: 1px solid #f1f5f9;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* 7. Student & Parent Mobile App Portal Bottom Sheet Modal */
+.mobile-app-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1060;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-app-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-app-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 24px 24px 0 0;
+    z-index: 1070;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.25);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-app-modal.active {
+    transform: translateY(0);
+}
+
+.sheet-drag-handle {
+    width: 40px;
+    height: 5px;
+    background: #cbd5e1;
+    border-radius: 3px;
+    margin: 10px auto 4px;
+}
+
+.modal-header {
+    padding: 12px 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.modal-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-title-box i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.modal-title-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin: 0;
+}
+
+.modal-title-box p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.modal-close-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modal-tab-nav {
+    display: flex;
+    gap: 6px;
+    padding: 10px 16px;
+    background: #f8fafc;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.modal-tab-btn {
+    flex: 1;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.modal-tab-btn.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 3px 10px rgba(236, 64, 122, 0.3);
+}
+
+.modal-body {
+    padding: 16px 20px 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-tab-pane {
+    display: none;
+}
+
+.modal-tab-pane.active {
+    display: block;
+}
+
+.portal-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(236, 64, 122, 0.15);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.portal-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.badge-tag {
+    background: rgba(236, 64, 122, 0.12);
+    color: var(--primary-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.badge-tag.bg-gold {
+    background: rgba(217, 119, 6, 0.12);
+    color: #d97706;
+}
+
+.date-tag {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.portal-card h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 6px;
+}
+
+.portal-card p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.erp-login-box {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.erp-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(236, 64, 122, 0.1);
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+}
+
+.erp-login-box h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.erp-login-box p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.fee-info-box, .helpdesk-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-row, .contact-card {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 12px;
+    align-items: center;
+}
+
+.info-row i, .contact-card i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.info-row strong, .contact-card strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-white);
+}
+
+.info-row p, .contact-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.mt-10 { margin-top: 10px; }
+.btn-sm { padding: 8px 16px; font-size: 0.82rem; }
+
+/* 8. Floating Action WhatsApp */
+.mobile-floating-actions {
+    display: none;
+    position: fixed;
+    right: 16px;
+    bottom: calc(75px + env(safe-area-inset-bottom));
+    z-index: 980;
+}
+
+.float-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.float-whatsapp {
+    background: #25d366;
+}
+
+.float-btn:active {
+    transform: scale(0.9);
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES FOR MOBILE APP UI
+   ========================================================================== */
+
+@media screen and (max-width: 991px) {
+    body {
+        padding-bottom: calc(65px + env(safe-area-inset-bottom));
+    }
+    
+    .mobile-app-top-actions {
+        display: flex;
+    }
+    
+    .pwa-install-banner {
+        display: flex;
+    }
+    
+    .mobile-stories-bar {
+        display: block;
+    }
+    
+    .mobile-app-dashboard-section {
+        display: block;
+    }
+    
+    .mobile-bottom-nav {
+        display: flex;
+    }
+    
+    .mobile-floating-actions {
+        display: block;
+    }
+    
+    /* Adjust Floating Sidebar on Mobile to avoid overlapping Bottom Nav */
+    .social-sidebar {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mobile-app-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .app-icon-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .app-label {
+        font-size: 0.7rem;
+    }
+
+    .app-tag {
+        font-size: 0.6rem;
+    }
+}
+
