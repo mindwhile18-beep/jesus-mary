@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+let PORT = parseInt(process.env.PORT, 10) || 3000;
 
 const MIME_TYPES = {
     '.html': 'text/html',
@@ -49,9 +49,24 @@ const server = http.createServer((req, res) => {
     });
 });
 
-server.listen(PORT, () => {
-    console.log(`\n==================================================`);
-    console.log(`  Infant Jesus School Server running successfully!`);
-    console.log(`  Access the site at: http://localhost:${PORT}`);
-    console.log(`==================================================\n`);
+function startServer(portToUse) {
+    server.listen(portToUse, () => {
+        console.log(`\n==================================================`);
+        console.log(`  JMJ School Server running successfully!`);
+        console.log(`  Access the site at: http://localhost:${portToUse}`);
+        console.log(`==================================================\n`);
+    });
+}
+
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        PORT += 1;
+        console.log(`Port ${PORT - 1} is already in use. Trying port ${PORT}...`);
+        setTimeout(() => startServer(PORT), 200);
+    } else {
+        console.error('Server error:', err);
+    }
 });
+
+startServer(PORT);
+

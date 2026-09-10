@@ -422,37 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // D. PWA Installation Event Listener
-    let deferredPrompt;
-    const pwaBanner = document.getElementById('pwaBanner');
-    const pwaInstallBtn = document.getElementById('pwaInstallBtn');
-    const pwaCloseBtn = document.getElementById('pwaCloseBtn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        if (pwaBanner) pwaBanner.style.display = 'flex';
-    });
-
-    if (pwaInstallBtn) {
-        pwaInstallBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response to install prompt: ${outcome}`);
-                deferredPrompt = null;
-                if (pwaBanner) pwaBanner.style.display = 'none';
-            } else {
-                alert('To install the JMJ Mobile App, tap your browser menu (⋮ or share button) and select "Add to Home Screen".');
-            }
-        });
-    }
-
-    if (pwaCloseBtn) {
-        pwaCloseBtn.addEventListener('click', () => {
-            if (pwaBanner) pwaBanner.style.display = 'none';
-        });
-    }
 
     // E. Touch Swipe Gesture Support for Stories & Hero Slider
     let touchStartX = 0;
